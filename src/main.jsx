@@ -6,12 +6,22 @@ import ErrorPage from './error-page';
 
 import './index.css'
 
-import Contact from './routes/contacts';
 import Root, {
     loader as rootLoader,
     action as rootAction
 } from './routes/root';
 
+import Contact, {
+    loader as contactLoader
+} from './routes/contacts';
+
+import EditContact, {
+    action as editAction
+} from './routes/edit';
+
+import {
+    action as destroyAction
+} from './routes/edit';
 
 
 const router = createBrowserRouter([
@@ -24,7 +34,18 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "contacts/:contactId",
-                element: <Contact />
+                element: <Contact />,
+                loader: contactLoader
+            },
+            {
+                path: "contacts/:contactId/edit",
+                element: <EditContact />,
+                loader: contactLoader,
+                action: editAction
+            },
+            {
+                path: "contacts/:contactId/destroy",
+                action: destroyAction
             }
         ]
     }

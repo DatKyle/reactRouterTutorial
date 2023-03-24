@@ -21,7 +21,7 @@ import EditContact, {
 
 import {
     action as destroyAction
-} from './routes/edit';
+} from './routes/destroy';
 
 
 const router = createBrowserRouter([
